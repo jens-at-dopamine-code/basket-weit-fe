@@ -1,12 +1,12 @@
-import "./globals.css";
+import './globals.css';
 
-import { Inter } from "next/font/google";
-import type { PropsWithChildren } from "react";
+import { Inter } from 'next/font/google';
+import type { PropsWithChildren } from 'react';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "Basket Weit",
+  title: 'Basket Weit',
   description: "Website for basketball club 'Bsket Weit'",
 };
 
