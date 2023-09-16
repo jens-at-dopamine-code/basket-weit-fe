@@ -1,3 +1,9 @@
 export enum ModuleRoute {
-  HOME = 'home',
+  HOME = '/',
+  SCHEDULE = '/schedule',
+  GAMES = '/games',
+  TEAMS = '/teams',
+  STANDINGS = '/standings',
+  EVENTS = '/events',
+  NEWS = '/news',
 }
