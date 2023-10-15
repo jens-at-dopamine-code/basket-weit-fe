@@ -2,7 +2,7 @@ import NextLink from 'next/link';
 import type { PropsWithChildren } from 'react';
 import React, { memo } from 'react';
 
-import type { ModuleRoute } from '@/enumerations';
+import type { ModuleRoute } from '@/_enumerations';
 import { styled } from '@/styled-system/jsx';
 
 type NavigationLinkProps = PropsWithChildren<{
@@ -13,7 +13,7 @@ type NavigationLinkProps = PropsWithChildren<{
 const Link = styled(NextLink, {
   base: {
     display: 'block',
-    p: 4,
+    mx: 2,
     color: 'rgba(255,255,255, 0.6)',
     _hover: {
       color: 'white',
@@ -22,8 +22,7 @@ const Link = styled(NextLink, {
   variants: {
     visual: {
       activeLink: {
-        bg: 'rgba(255,255,255, 0.6)',
-        color: 'primary',
+        color: 'white',
       },
     },
   },

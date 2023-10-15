@@ -4,17 +4,17 @@ import React from 'react';
 import { cva } from '@/styled-system/css';
 import { styled } from '@/styled-system/jsx';
 
-// const imageStyles = css({ display: 'block', '&:not': { _first: '' } });
-
 const Container = styled('footer', {
   base: {
-    borderTop: 2,
-    p: 4,
+    p: 8,
+    borderColor: 'secondary',
+    borderTopWidth: 1,
+    gridArea: 'footer',
   },
 });
 
 const Sponsors = styled('p', {
-  base: { pb: 4, color: 'rgba(0,0,0,0.4)' },
+  base: { mb: 4, color: 'rgba(0,0,0,0.4)' },
 });
 
 const ImageContainer = styled('div', {
@@ -31,7 +31,7 @@ const imageStyles = cva({
   variants: {
     visual: {
       notFirst: {
-        ml: 8,
+        ml: 1,
       },
     },
   },

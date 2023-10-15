@@ -3,22 +3,30 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
 
+import { Footer, Header } from '@/_components';
 import { styled } from '@/styled-system/jsx';
-
-import { Footer, Header } from './components';
 
 const inter = Inter({ subsets: ['latin'] });
 
 const Main = styled('main', {
   base: {
-    p: 8,
+    gridArea: 'main',
+    p: { sm: 8, md: 8, lg: 12 },
+    overflow: 'auto',
   },
 });
 
 const Grid = styled('div', {
   base: {
+    height: 'screen',
     display: 'grid',
-    gridAutoColumns: 'auto, 1fr, auto',
+    gridAutoColumns: '1fr',
+    gridTemplateRows: 'auto 1fr auto',
+    gridTemplateAreas: `
+      'header'
+      'main'
+      'footer'
+    `,
   },
 });
 

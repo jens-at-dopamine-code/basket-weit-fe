@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import type { PropsWithChildren } from 'react';
 
-import type { ModuleRoute } from '@/enumerations';
+import type { ModuleRoute } from '@/_enumerations';
 import { styled } from '@/styled-system/jsx';
 
 import { NavigationLink } from './NavigationLink';
@@ -14,7 +14,7 @@ type NavigationItemProps = PropsWithChildren<{
 
 const List = styled('li', {
   base: {
-    p: 8,
+    p: 0.5,
   },
 });
 

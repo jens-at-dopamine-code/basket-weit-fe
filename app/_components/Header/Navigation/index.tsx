@@ -1,20 +1,25 @@
-import { ModuleRoute } from '@/enumerations';
+import { ModuleRoute } from '@/_enumerations';
 import { styled } from '@/styled-system/jsx';
 
 import { NavigationItem } from './NavigationItem';
+
+const Nav = styled('nav', {
+  base: {
+    ml: 4,
+  },
+});
 
 const List = styled('ul', {
   base: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'start',
-    bg: 'primary',
   },
 });
 
 export const Navigation = () => {
   return (
-    <nav>
+    <Nav>
       <List>
         <NavigationItem uri={ModuleRoute.HOME}>Home</NavigationItem>
         <NavigationItem uri={ModuleRoute.SCHEDULE}>Schedule</NavigationItem>
@@ -24,6 +29,6 @@ export const Navigation = () => {
         <NavigationItem uri={ModuleRoute.EVENTS}>Events</NavigationItem>
         <NavigationItem uri={ModuleRoute.NEWS}>News</NavigationItem>
       </List>
-    </nav>
+    </Nav>
   );
 };
