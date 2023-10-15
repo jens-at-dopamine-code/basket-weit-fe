@@ -1,14 +1,17 @@
 import Image from 'next/image';
 
+import { css } from '@/styled-system/css';
 import { styled } from '@/styled-system/jsx';
 
 const Container = styled('article', {
   base: {
+    w: { base: '100%', lg: '845px' },
     bgColor: 'primary',
     display: 'flex',
     color: 'white',
     borderRadius: 'md',
     padding: 2,
+    flexDir: { base: 'column', lg: 'row' },
   },
 });
 
@@ -28,6 +31,16 @@ const Title = styled('h2', {
 
 const Text = styled('p', {});
 
+const imageStyles = css({
+  display: { base: 'none', lg: 'block' },
+  alignSelf: 'center',
+});
+
+const mobileImageStyles = css({
+  display: { base: 'block', lg: 'none' },
+  alignSelf: 'center',
+});
+
 export const About = () => {
   return (
     <Container>
@@ -44,11 +57,24 @@ export const About = () => {
         </Text>
       </ContentContainer>
       <Image
+        className={mobileImageStyles}
         alt="Player avatar"
         width={321}
         height={550}
         src="/player.png"
-        sizes="250px"
+        sizes="160"
+        style={{
+          height: 'auto',
+          width: '15%',
+        }}
+      />
+      <Image
+        className={imageStyles}
+        alt="Player avatar"
+        width={321}
+        height={550}
+        src="/player.png"
+        sizes="160"
         style={{
           height: '100%',
           width: 'auto',

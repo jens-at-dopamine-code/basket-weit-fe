@@ -10,23 +10,17 @@ const inter = Inter({ subsets: ['latin'] });
 
 const Main = styled('main', {
   base: {
-    gridArea: 'main',
-    p: { sm: 8, md: 8, lg: 12 },
-    overflow: 'auto',
+    p: { base: 8, lg: 12 },
+    flexGrow: 1,
   },
 });
 
 const Grid = styled('div', {
   base: {
-    height: 'screen',
-    display: 'grid',
-    gridAutoColumns: '1fr',
-    gridTemplateRows: 'auto 1fr auto',
-    gridTemplateAreas: `
-      'header'
-      'main'
-      'footer'
-    `,
+    minHeight: 'screen',
+    w: 'screen',
+    display: 'flex',
+    flexDir: 'column',
   },
 });
 

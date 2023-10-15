@@ -13,9 +13,7 @@ type NavigationItemProps = PropsWithChildren<{
 }>;
 
 const List = styled('li', {
-  base: {
-    p: 0.5,
-  },
+  base: {},
 });
 
 export const NavigationItem = ({ children, uri }: NavigationItemProps) => {

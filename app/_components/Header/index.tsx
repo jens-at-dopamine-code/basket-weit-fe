@@ -10,7 +10,7 @@ const HeaderContainer = styled('header', {
     display: 'flex',
     alignItems: 'center',
     bg: 'primary',
-    gridArea: 'header',
+    p: 4,
   },
 });
 

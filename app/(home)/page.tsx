@@ -4,8 +4,8 @@ import { About, CalendarWidget } from './_components';
 
 const Main = styled('main', {
   base: {
-    display: 'grid',
-    gridTemplateColumns: { sm: '1', md: '1', lg: '3fr 2fr' },
+    display: 'flex',
+    flexDir: { base: 'column', lg: 'row' },
     gap: 4,
   },
 });

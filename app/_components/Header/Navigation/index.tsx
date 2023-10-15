@@ -22,12 +22,12 @@ export const Navigation = () => {
     <Nav>
       <List>
         <NavigationItem uri={ModuleRoute.HOME}>Home</NavigationItem>
-        <NavigationItem uri={ModuleRoute.SCHEDULE}>Schedule</NavigationItem>
+        {/* <NavigationItem uri={ModuleRoute.SCHEDULE}>Schedule</NavigationItem>
         <NavigationItem uri={ModuleRoute.GAMES}>Games</NavigationItem>
         <NavigationItem uri={ModuleRoute.TEAMS}>Teams</NavigationItem>
         <NavigationItem uri={ModuleRoute.STANDINGS}>Standings</NavigationItem>
         <NavigationItem uri={ModuleRoute.EVENTS}>Events</NavigationItem>
-        <NavigationItem uri={ModuleRoute.NEWS}>News</NavigationItem>
+        <NavigationItem uri={ModuleRoute.NEWS}>News</NavigationItem> */}
       </List>
     </Nav>
   );
