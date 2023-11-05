@@ -6,8 +6,6 @@ import { styled } from '@/styled-system/jsx';
 
 const Container = styled('footer', {
   base: {
-    px: { base: 4, xl: 0 },
-    py: { base: 4 },
     display: 'flex',
     alignItems: 'center',
     flexDir: 'column',
@@ -32,6 +30,8 @@ const ImageContainer = styled('div', {
     flexWrap: 'wrap',
     justifyContent: { base: 'space-around', xl: 'space-between' },
     w: { base: 'screen', xl: '1280px' },
+    px: { base: 4, xl: 0 },
+    py: { base: 4 },
   },
 });
 

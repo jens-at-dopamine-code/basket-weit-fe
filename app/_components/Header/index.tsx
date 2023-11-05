@@ -8,7 +8,8 @@ import { Navigation } from './Navigation';
 const HeaderContainer = styled('header', {
   base: {
     bg: 'primary',
-    p: 4,
+    px: 8,
+    py: 4,
     display: 'flex',
     justifyContent: 'center',
   },
