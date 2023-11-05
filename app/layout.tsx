@@ -6,8 +6,6 @@ import type { PropsWithChildren } from 'react';
 import { Footer, Header } from '@/_components';
 import { styled } from '@/styled-system/jsx';
 
-import { WRAPPER_STYLES } from './_constants';
-
 const inter = Inter({ subsets: ['latin'] });
 
 const Container = styled('div', {
@@ -24,7 +22,7 @@ const Main = styled('main', {
     py: { base: 8, xl: 12 },
     flexGrow: 1,
     alignSelf: 'center',
-    ...WRAPPER_STYLES,
+    w: { base: 'screen', xl: '1280px' },
   },
 });
 

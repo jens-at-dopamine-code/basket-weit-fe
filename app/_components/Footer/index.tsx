@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { WRAPPER_STYLES } from '@/_constants';
 import { cva } from '@/styled-system/css';
 import { styled } from '@/styled-system/jsx';
 
@@ -21,7 +20,7 @@ const Sponsors = styled('h3', {
     color: 'rgba(0,0,0,0.4)',
     textAlign: 'center',
     fontSize: 32,
-    ...WRAPPER_STYLES,
+    w: { base: 'screen', xl: '1280px' },
   },
 });
 
@@ -32,7 +31,7 @@ const ImageContainer = styled('div', {
     flexDir: 'row',
     flexWrap: 'wrap',
     justifyContent: { base: 'space-around', xl: 'space-between' },
-    ...WRAPPER_STYLES,
+    w: { base: 'screen', xl: '1280px' },
   },
 });
 

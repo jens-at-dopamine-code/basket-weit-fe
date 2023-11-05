@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { WRAPPER_STYLES } from '@/_constants';
 import { styled } from '@/styled-system/jsx';
 
 import { Logo } from './Logo';
@@ -19,7 +18,7 @@ const Wrapper = styled('div', {
   base: {
     display: 'flex',
     alignItems: 'center',
-    ...WRAPPER_STYLES,
+    w: { base: 'screen', xl: '1280px' },
   },
 });
 
