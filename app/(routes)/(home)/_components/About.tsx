@@ -5,13 +5,13 @@ import { styled } from '@/styled-system/jsx';
 
 const Container = styled('article', {
   base: {
-    w: { base: '100%', lg: '845px' },
+    w: { base: '100%', xl: '845px' },
     bgColor: 'primary',
     display: 'flex',
     color: 'neutral.100',
     borderRadius: 'md',
     padding: 2,
-    flexDir: { base: 'column', lg: 'row' },
+    flexDir: { base: 'column', xl: 'row' },
   },
 });
 
@@ -48,12 +48,12 @@ const Text = styled('p', {
 });
 
 const imageStyles = css({
-  display: { base: 'none', lg: 'block' },
+  display: { base: 'none', xl: 'block' },
   alignSelf: 'center',
 });
 
 const mobileImageStyles = css({
-  display: { base: 'block', lg: 'none' },
+  display: { base: 'block', xl: 'none' },
   alignSelf: 'center',
 });
 
@@ -95,7 +95,7 @@ export const About = () => {
         src="/player.png"
         sizes="160"
         style={{
-          height: '100%',
+          height: '80%',
           width: 'auto',
         }}
       />

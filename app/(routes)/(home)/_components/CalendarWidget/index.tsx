@@ -7,7 +7,9 @@ import { styled } from '@/styled-system/jsx';
 import { CalendarEntry } from './CalendarEntry';
 
 const Container = styled('article', {
-  base: {},
+  base: {
+    flexGrow: 1,
+  },
 });
 
 const Title = styled('h2', {

@@ -5,7 +5,7 @@ import { About, CalendarWidget } from './_components';
 const Main = styled('main', {
   base: {
     display: 'flex',
-    flexDir: { base: 'column', lg: 'row' },
+    flexDir: { base: 'column', xl: 'row' },
     gap: 4,
   },
 });

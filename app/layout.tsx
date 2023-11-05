@@ -6,21 +6,25 @@ import type { PropsWithChildren } from 'react';
 import { Footer, Header } from '@/_components';
 import { styled } from '@/styled-system/jsx';
 
+import { WRAPPER_STYLES } from './_constants';
+
 const inter = Inter({ subsets: ['latin'] });
 
-const Main = styled('main', {
+const Container = styled('div', {
   base: {
-    p: { base: 8, lg: 12 },
-    flexGrow: 1,
+    minHeight: 'screen',
+    display: 'flex',
+    flexDir: 'column',
   },
 });
 
-const Grid = styled('div', {
+const Main = styled('main', {
   base: {
-    minHeight: 'screen',
-    w: 'screen',
-    display: 'flex',
-    flexDir: 'column',
+    px: { base: 8, xl: 0 },
+    py: { base: 8, xl: 12 },
+    flexGrow: 1,
+    alignSelf: 'center',
+    ...WRAPPER_STYLES,
   },
 });
 
@@ -33,11 +37,11 @@ const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Grid>
+        <Container>
           <Header />
           <Main>{children}</Main>
           <Footer />
-        </Grid>
+        </Container>
       </body>
     </html>
   );
