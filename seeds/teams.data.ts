@@ -1,6 +1,4 @@
-import type { Team } from '@/_types';
-
-export const teamsDataById: Record<Team['id'], Team> = {
+export const teamsDataById = {
   5030: {
     id: 5030,
     name: 'Flam',

@@ -1,3 +1,3 @@
-import type * as FeatherIcons from 'react-icons/fi';
+import type * as HeroIcons2 from 'react-icons/hi2';
 
-export type IconName = keyof typeof FeatherIcons;
+export type IconName = keyof typeof HeroIcons2;

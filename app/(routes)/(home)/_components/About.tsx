@@ -8,7 +8,7 @@ const Container = styled('article', {
     w: { base: '100%', lg: '845px' },
     bgColor: 'primary',
     display: 'flex',
-    color: 'white',
+    color: 'neutral.100',
     borderRadius: 'md',
     padding: 2,
     flexDir: { base: 'column', lg: 'row' },
@@ -29,7 +29,23 @@ const Title = styled('h2', {
   },
 });
 
-const Text = styled('p', {});
+const Text = styled('p', {
+  base: {
+    paddingBottom: '4',
+    lineHeight: 'tight',
+    letterSpacing: '0.1em',
+    '& a': {
+      textDecoration: 'underline',
+    },
+  },
+  variants: {
+    visual: {
+      isLast: {
+        paddingBottom: 0,
+      },
+    },
+  },
+});
 
 const imageStyles = css({
   display: { base: 'none', lg: 'block' },
@@ -49,11 +65,14 @@ export const About = () => {
         <Text>
           Onze bezieler Arvid Leemans vond het jammer dat er geen weerds
           basketbal meer was nadat de club Basket klub Weerde in 2014 de boeken
-          had moeten neerleggen. Nadat een groot deel van de spelers een jaar
-          hadden vertoefd bij een andere Zemste club werd er besloten om toch
-          terug een Weerds team het leven in te roepen. En zo geschiede dat in
-          2015 Basket Weit het leven werd ingeroepen en we aan de slag gingen in
-          het Antwerps Vriendenverbond (KAVVV)
+          had moeten neerleggen.
+        </Text>
+        <Text visual="isLast">
+          Nadat een groot deel van de spelers een jaar hadden vertoefd bij een
+          andere Zemste club werd er besloten om toch terug een Weerds team het
+          leven in te roepen. En zo geschiede dat in 2015 Basket Weit het leven
+          werd ingeroepen en we aan de slag gingen in het Antwerps
+          Vriendenverbond (<a href="https://www.kavvv-basket.be/">KAVVV</a>)
         </Text>
       </ContentContainer>
       <Image

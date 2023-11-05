@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { FeatherIcon } from '@/_components';
+import { Icon } from '@/_components';
 import { BASKET_WEIT_ID } from '@/_constants';
 import type { Game } from '@/_types';
 import { cva } from '@/styled-system/css';
 import { styled } from '@/styled-system/jsx';
-
-import { teamsDataById } from './teams.data';
 
 type CalendarEntryProps = Game & {
   isLast?: boolean;
@@ -54,24 +52,25 @@ const iconStyles = cva({
 });
 
 export const CalendarEntry = ({
-  homeTeam,
-  awayTeam,
+  awayTeamName,
   date,
+  gameType,
+  homeTeamId,
+  homeTeamName,
   isLast = false,
 }: CalendarEntryProps) => {
-  const { name: homeTeamName } = teamsDataById[homeTeam];
-  const { name: awayTeamName } = teamsDataById[awayTeam];
-  const isHomeGame = homeTeam === BASKET_WEIT_ID;
-  const opponent = isHomeGame ? awayTeamName : homeTeamName;
-  const locationAbbreviation = isHomeGame ? 'VS' : '@';
-  const when = new Date(date);
+  const description =
+    homeTeamId === BASKET_WEIT_ID ? `VS ${awayTeamName}` : `@ ${homeTeamName}`;
+  const when = new Date(date).toLocaleDateString('nl-BE', dateFormatOptions);
+  const iconName = gameType === 'cup' ? 'HiOutlineTrophy' : 'HiOutlineCalendar';
+
   return (
     <Container {...(isLast && { visual: 'isLast' })}>
       <DateTime>
-        <FeatherIcon iconName="FiCalendar" className={iconStyles()} />
-        {when.toLocaleDateString('nl-BE', dateFormatOptions)}
+        <Icon iconName={iconName} className={iconStyles()} />
+        {when}
       </DateTime>
-      {`${locationAbbreviation} ${opponent}`}
+      {description}
     </Container>
   );
 };

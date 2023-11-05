@@ -1,9 +1,13 @@
 import type { Team } from './team.type';
 
 export type Game = {
-  homeTeam: Team['id'];
-  awayTeam: Team['id'];
+  id: number;
+  awayTeamId: Team['id'];
+  awayTeamName: Team['name'];
+  awayTeamScore?: number;
   date: string;
-  homeScore?: number;
-  awayScore?: number;
+  gameType: 'competition' | 'cup';
+  homeTeamId: Team['id'];
+  homeTeamName: Team['name'];
+  homeTeamScore?: number;
 };

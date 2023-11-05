@@ -1,9 +1,10 @@
-import { isFuture, isToday } from 'date-fns';
+import { sub } from 'date-fns';
 
+import { BASKET_WEIT_ID } from '@/_constants';
+import { getGames } from '@/_data';
 import { styled } from '@/styled-system/jsx';
 
 import { CalendarEntry } from './CalendarEntry';
-import { gamesData } from './games.data';
 
 const Container = styled('article', {
   base: {},
@@ -25,19 +26,18 @@ const CalendarList = styled('ul', {
   },
 });
 
-const next5Games = gamesData
-  .filter(({ date }) => {
-    const dateAsDate = new Date(date);
-    return isToday(dateAsDate) || isFuture(dateAsDate);
-  })
-  .slice(0, 5);
+export const CalendarWidget = async () => {
+  const games = await getGames({
+    forTeams: [BASKET_WEIT_ID],
+    limit: 5,
+    startDate: sub(new Date(), { days: 1 }),
+  });
 
-export const CalendarWidget = () => {
   return (
     <Container>
-      <Title>Komende Wedstrijden</Title>
+      <Title>Komende Wedstrijden {Math.floor(Math.random() * 10)}</Title>
       <CalendarList>
-        {next5Games.map((item, index) => (
+        {games.map((item, index) => (
           <CalendarEntry key={item.date} {...item} isLast={index === 4} />
         ))}
       </CalendarList>
