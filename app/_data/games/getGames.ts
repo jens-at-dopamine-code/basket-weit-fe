@@ -1,9 +1,13 @@
 import { db } from '@vercel/postgres';
+import { cache } from 'react';
 
 import type { Game, Team } from '@/_types';
 import { getErrorMessage } from '@/_utils';
 
 import type { GetGamesRow } from './get-games-row.type';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 1;
 
 const TEAM_IDS: Team['id'][] = [
   5299, 5288, 5245, 5287, 5323, 5030, 5315, 5158, 5260, 5207, 5228, 5324,
@@ -60,34 +64,36 @@ const mapRowToGame = ({
   homeTeamScore: home_team_score,
 });
 
-export const getGames = async ({
-  forTeams = TEAM_IDS,
-  limit = 100,
-  offset = 0,
-  orderBy = 'date',
-  startDate = new Date(0),
-  types = GAME_TYPES,
-}: GetGamesFilters = {}): Promise<Game[]> => {
-  try {
-    const client = await db.connect();
-    const values = [
-      forTeams,
-      startDate.toISOString(),
-      types,
-      orderBy,
-      limit,
-      offset,
-    ];
-    const { rows } = await client.query<GetGamesRow>(rawQuery, values);
-    return rows.map(mapRowToGame);
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.log(
-      getErrorMessage(
-        error,
-        'Something went wrong while retrieving the games.',
-      ),
-    );
-    return [];
-  }
-};
+export const getGames = cache(
+  async ({
+    forTeams = TEAM_IDS,
+    limit = 100,
+    offset = 0,
+    orderBy = 'date',
+    startDate = new Date(0),
+    types = GAME_TYPES,
+  }: GetGamesFilters = {}): Promise<Game[]> => {
+    try {
+      const client = await db.connect();
+      const values = [
+        forTeams,
+        startDate.toISOString(),
+        types,
+        orderBy,
+        limit,
+        offset,
+      ];
+      const { rows } = await client.query<GetGamesRow>(rawQuery, values);
+      return rows.map(mapRowToGame);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(
+        getErrorMessage(
+          error,
+          'Something went wrong while retrieving the games.',
+        ),
+      );
+      return [];
+    }
+  },
+);
