@@ -37,7 +37,7 @@ export const CalendarWidget = async () => {
 
   return (
     <Container>
-      <Title>Komende Wedstrijden {Math.floor(Math.random() * 10)}</Title>
+      <Title>Komende Wedstrijden</Title>
       <CalendarList>
         {games.map((item, index) => (
           <CalendarEntry key={item.date} {...item} isLast={index === 4} />
