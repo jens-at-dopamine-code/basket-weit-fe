@@ -6,6 +6,8 @@ import { styled } from '@/styled-system/jsx';
 
 import { CalendarEntry } from './CalendarEntry';
 
+export const revalidate = 1;
+
 const Container = styled('article', {
   base: {
     flexGrow: 1,
