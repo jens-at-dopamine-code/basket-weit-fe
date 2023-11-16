@@ -1,7 +1,7 @@
 import { sub } from 'date-fns';
 
 import { BASKET_WEIT_ID } from '@/_constants';
-import { getGames } from '@/_data';
+import type { Game } from '@/_types';
 import { styled } from '@/styled-system/jsx';
 
 import { CalendarEntry } from './CalendarEntry';
@@ -28,12 +28,27 @@ const CalendarList = styled('ul', {
   },
 });
 
-export const CalendarWidget = async () => {
-  const games = await getGames({
-    forTeams: [BASKET_WEIT_ID],
-    limit: 5,
-    startDate: sub(new Date(), { days: 1 }),
+const getGames = async (): Promise<Game[]> => {
+  const url = new URL(`${process.env.API_URL}/games`);
+  url.searchParams.append('forTeams', `${BASKET_WEIT_ID}`);
+  url.searchParams.append('limit', '5');
+  url.searchParams.append(
+    'startDate',
+    sub(new Date(), { days: 1 }).toISOString(),
+  );
+
+  const result = await fetch(url, {
+    next: { revalidate: 3600, tags: ['getGames'] },
   });
+  if (!result.ok) {
+    return [];
+  }
+  const { data } = await result.json();
+  return data;
+};
+
+export const CalendarWidget = async () => {
+  const games = await getGames();
 
   return (
     <Container>

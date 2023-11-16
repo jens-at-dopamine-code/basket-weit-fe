@@ -1,24 +1,16 @@
 import { db } from '@vercel/postgres';
-import { cache } from 'react';
 
+import { GAME_TYPES, TEAM_IDS } from '@/_constants';
 import type { Game, Team } from '@/_types';
 import { getErrorMessage } from '@/_utils';
 
-import type { GetGamesRow } from './get-games-row.type';
-
-export const revalidate = 60;
-
-const TEAM_IDS: Team['id'][] = [
-  5299, 5288, 5245, 5287, 5323, 5030, 5315, 5158, 5260, 5207, 5228, 5324,
-];
-
-const GAME_TYPES: Game['gameType'][] = ['competition', 'cup'];
+import type { GetGamesRowReturn } from './_get-games-row.type';
 
 type GetGamesFilters = {
   forTeams?: typeof TEAM_IDS;
   limit?: number;
   offset?: number;
-  orderBy?: keyof GetGamesRow;
+  orderBy?: keyof GetGamesRowReturn;
   startDate?: Date;
   types?: Game['gameType'][];
 };
@@ -51,7 +43,7 @@ const mapRowToGame = ({
   home_team_id,
   home_team_name,
   home_team_score,
-}: GetGamesRow): Game => ({
+}: GetGamesRowReturn): Game => ({
   awayTeamId: away_team_id as Team['id'],
   awayTeamName: away_team_name,
   date,
@@ -63,30 +55,26 @@ const mapRowToGame = ({
   homeTeamScore: home_team_score,
 });
 
-export const getGames = cache(
-  async ({
-    forTeams = TEAM_IDS,
-    limit = 100,
-    offset = 0,
-    startDate = new Date(0),
-    types = GAME_TYPES,
-  }: GetGamesFilters = {}): Promise<Game[]> => {
-    try {
-      const client = await db.connect();
-      const values = [forTeams, startDate.toISOString(), types, limit, offset];
-
-      const { rows } = await client.query<GetGamesRow>(rawQuery, values);
-
-      return rows.map(mapRowToGame);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(
-        getErrorMessage(
-          error,
-          'Something went wrong while retrieving the games.',
-        ),
-      );
-      return [];
-    }
-  },
-);
+export const getGames = async ({
+  forTeams = TEAM_IDS,
+  limit = 100,
+  offset = 0,
+  startDate = new Date(0),
+  types = GAME_TYPES,
+}: GetGamesFilters = {}): Promise<Game[]> => {
+  try {
+    const client = await db.connect();
+    const values = [forTeams, startDate.toISOString(), types, limit, offset];
+    const { rows } = await client.query<GetGamesRowReturn>(rawQuery, values);
+    return rows.map(mapRowToGame);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(
+      getErrorMessage(
+        error,
+        'Something went wrong while retrieving the games.',
+      ),
+    );
+    return [];
+  }
+};
