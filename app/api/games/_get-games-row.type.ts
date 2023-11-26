@@ -8,4 +8,5 @@ export type GetGamesRowReturn = {
   home_team_id: number;
   home_team_name: string;
   home_team_score?: number;
+  series: string;
 };

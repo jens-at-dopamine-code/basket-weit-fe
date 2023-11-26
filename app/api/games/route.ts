@@ -22,13 +22,16 @@ const gamesRow: GetGamesRowReturnKey[] = [
 ];
 
 const getForTeams = (forTeamsRaw: string[]) =>
-  forTeamsRaw.reduce((forTeams, teamIdString) => {
-    const teamId = +teamIdString as Team['id'];
-    if (TEAM_IDS.includes(teamId)) {
-      forTeams.push(teamId);
-    }
-    return forTeams;
-  }, [] as Team['id'][]);
+  forTeamsRaw.reduce(
+    (forTeams, teamIdString) => {
+      const teamId = +teamIdString as Team['id'];
+      if (TEAM_IDS.includes(teamId)) {
+        forTeams.push(teamId);
+      }
+      return forTeams;
+    },
+    [] as Team['id'][],
+  );
 
 const getOrderBy = (rawOrderBy: string | null) =>
   gamesRow.includes(rawOrderBy as GetGamesRowReturnKey)

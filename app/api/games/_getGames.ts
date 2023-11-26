@@ -43,6 +43,7 @@ const mapRowToGame = ({
   home_team_id,
   home_team_name,
   home_team_score,
+  series,
 }: GetGamesRowReturn): Game => ({
   awayTeamId: away_team_id as Team['id'],
   awayTeamName: away_team_name,
@@ -53,6 +54,7 @@ const mapRowToGame = ({
   id: game_id,
   awayTeamScore: away_team_score,
   homeTeamScore: home_team_score,
+  series,
 });
 
 export const getGames = async ({
