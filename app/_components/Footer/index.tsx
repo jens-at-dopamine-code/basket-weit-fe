@@ -44,11 +44,6 @@ const imageStyles = cva({
       transform: 'scale(1.05)',
     },
   },
-  variants: {
-    visual: {
-      first: {},
-    },
-  },
 });
 
 export const Footer = () => (
@@ -57,9 +52,10 @@ export const Footer = () => (
     <ImageContainer>
       <a href="https://www.codious.io/" target="_blank" rel="noreferrer">
         <Image
-          className={imageStyles({ visual: 'first' })}
+          className={imageStyles()}
           alt="Codious logo"
           src="/codious-logo.png"
+          style={{ width: '156px', height: '50px' }}
           width={156}
           height={50}
         />
@@ -73,6 +69,7 @@ export const Footer = () => (
           className={imageStyles()}
           alt="Frituur Weit logo"
           src="/frituur-weit-logo.png"
+          style={{ width: '75px', height: '75px' }}
           width={75}
           height={75}
         />
@@ -86,6 +83,7 @@ export const Footer = () => (
           className={imageStyles()}
           alt="De Rut logo"
           src="/rut-logo.png"
+          style={{ width: '75px', height: '75px' }}
           width={75}
           height={75}
         />
@@ -99,6 +97,7 @@ export const Footer = () => (
           className={imageStyles()}
           alt="Schoonzicht logo"
           src="/schoonzicht-logo.png"
+          style={{ width: '103px', height: '50px' }}
           width={103}
           height={50}
         />
@@ -108,6 +107,7 @@ export const Footer = () => (
           className={imageStyles()}
           alt="Scheers logo"
           src="/scheers-logo.png"
+          style={{ width: '178px', height: '125px' }}
           width={178}
           height={125}
         />
